@@ -1,30 +1,62 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="main_app">
+    <h1 class="text-center">Tic Tac Toe</h1>
+    <hr />
+    <Board />
+    <footer>
+      Developed by
+      <a
+        href="https://sushil-kamble.netlify.app/"
+        class="link-style"
+        target="_blank"
+      >
+        Sushil Kamble
+      </a>
+    </footer>
   </div>
-  <router-view/>
 </template>
 
+<script>
+import Board from "./components/Board";
+
+export default {
+  components: { Board },
+};
+</script>
+
 <style>
+body {
+  background: rgb(25, 25, 25);
+  background: linear-gradient(
+    90deg,
+    rgba(25, 25, 25, 1) 0%,
+    rgba(88, 91, 107, 1) 72%
+  );
+  color: white;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.text-center {
   text-align: center;
-  color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
+.link-style {
+  color: black;
+  text-decoration: none;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: black;
+  background: gray;
+  text-align: center;
 }
 </style>
