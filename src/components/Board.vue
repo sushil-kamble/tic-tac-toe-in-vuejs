@@ -45,21 +45,21 @@
 
 <script>
 export default {
-  name: "Board",
+  name: 'Board',
   data() {
     return {
-      startPlayer: "X",
-      currentPlayer: "X",
+      startPlayer: 'X',
+      currentPlayer: 'X',
       xCount: 0,
       yCount: 0,
       board: [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
       ],
-      winner: "",
-      disable: false,
-    };
+      winner: '',
+      disable: false
+    }
   },
 
   watch: {
@@ -67,16 +67,16 @@ export default {
       handler: function () {
         const check = (x1, x2, y1, y2, z1, z2) => {
           return (
-            this.board[x1][x2] !== "" &&
-            this.board[y1][y2] !== "" &&
-            this.board[z1][z2] !== "" &&
+            this.board[x1][x2] !== '' &&
+            this.board[y1][y2] !== '' &&
+            this.board[z1][z2] !== '' &&
             this.board[x1][x2] === this.board[y1][y2] &&
             this.board[y1][y2] === this.board[z1][z2]
-          );
-        };
+          )
+        }
         const exists = (arr) => {
-          return arr.some((row) => row.includes(""));
-        };
+          return arr.some((row) => row.includes(''))
+        }
 
         const conditionArray = [
           check(0, 0, 0, 1, 0, 2),
@@ -86,62 +86,62 @@ export default {
           check(0, 1, 1, 1, 2, 1),
           check(0, 2, 1, 2, 2, 2),
           check(0, 0, 1, 1, 2, 2),
-          check(0, 2, 1, 1, 2, 0),
-        ];
+          check(0, 2, 1, 1, 2, 0)
+        ]
+
         if (conditionArray.includes(true)) {
-          this.winner = this.currentPlayer === "X" ? "O" : "X";
-          this.disable = true;
-          if (this.winner === "X") this.xCount++;
-          else if (this.winner === "O") this.yCount++;
-        }
-        if (!exists(this.board)) {
-          this.winner = "Draw";
+          this.winner = this.currentPlayer === 'X' ? 'O' : 'X'
+          this.disable = true
+          if (this.winner === 'X') this.xCount++
+          else if (this.winner === 'O') this.yCount++
+        } else if (!exists(this.board)) {
+          this.winner = 'Draw'
         }
       },
-      deep: true,
-    },
+      deep: true
+    }
   },
   methods: {
     turn(x, y) {
-      if (this.currentPlayer === "X") {
-        this.board[x][y] = this.currentPlayer;
-        this.currentPlayer = "O";
+      if (this.currentPlayer === 'X') {
+        this.board[x][y] = this.currentPlayer
+        this.currentPlayer = 'O'
       } else {
-        this.board[x][y] = this.currentPlayer;
-        this.currentPlayer = "X";
+        this.board[x][y] = this.currentPlayer
+        this.currentPlayer = 'X'
       }
     },
     nextGame() {
-      this.disable = false;
+      this.disable = false
       this.board = [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ];
-      this.winner = "";
-      if (this.startPlayer === "X") {
-        this.currentPlayer = "O";
-        this.startPlayer = "O";
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+      ]
+      this.winner = ''
+      if (this.startPlayer === 'X') {
+        this.currentPlayer = 'O'
+        this.startPlayer = 'O'
       } else {
-        this.currentPlayer = "X";
-        this.startPlayer = "X";
+        this.currentPlayer = 'X'
+        this.startPlayer = 'X'
       }
     },
     completeReset() {
-      this.disable = false;
+      this.disable = false
       this.board = [
-        ["", "", ""],
-        ["", "", ""],
-        ["", "", ""],
-      ];
-      this.winner = "";
-      this.xCount = 0;
-      this.yCount = 0;
-      this.currentPlayer = "X";
-      this.startPlayer = "X";
-    },
-  },
-};
+        ['', '', ''],
+        ['', '', ''],
+        ['', '', '']
+      ]
+      this.winner = ''
+      this.xCount = 0
+      this.yCount = 0
+      this.currentPlayer = 'X'
+      this.startPlayer = 'X'
+    }
+  }
+}
 </script>
 
 <style scoped>
@@ -191,13 +191,10 @@ td:hover {
 }
 
 .next-turn {
-  flex: 1;
-  background: linear-gradient(
-    90deg,
-    rgba(25, 25, 25, 1) 0%,
-    rgba(88, 91, 107, 1) 72%
-  );
-  padding: 20px;
+  background: rgb(90, 90, 90, 0.4);
+  margin-top: 20px;
+  padding: 5px;
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2);
 }
 
 .large-font {

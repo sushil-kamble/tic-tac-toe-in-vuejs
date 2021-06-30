@@ -17,11 +17,11 @@
 </template>
 
 <script>
-import Board from "./components/Board";
+import Board from './components/Board'
 
 export default {
-  components: { Board },
-};
+  components: { Board }
+}
 </script>
 
 <style>
@@ -46,7 +46,7 @@ body {
 }
 
 .link-style {
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -55,8 +55,8 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  color: black;
-  background: gray;
+  color: white;
+  background: rgb(90, 90, 90);
   text-align: center;
 }
 </style>
