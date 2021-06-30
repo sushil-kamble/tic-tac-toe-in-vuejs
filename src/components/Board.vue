@@ -92,9 +92,11 @@ export default {
         if (conditionArray.includes(true)) {
           this.winner = this.currentPlayer === 'X' ? 'O' : 'X'
           this.disable = true
+          this.currentPlayer = 'Z'
           if (this.winner === 'X') this.xCount++
           else if (this.winner === 'O') this.yCount++
         } else if (!exists(this.board)) {
+          this.currentPlayer = 'Z'
           this.winner = 'Draw'
         }
       },
